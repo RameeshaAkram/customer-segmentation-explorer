@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Segmentation Explorer</title>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
+    </script>
+    
+    <!-- Papa Parse for CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js">
+    </script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <div class="container" id="app">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <h1>
+                    🧩 Customer Segmentation Explorer
+                    <small>k-means</small>
+                </h1>
+                <div class="subtitle">Upload your customer data and explore patterns with k-means clustering</div>
+            </div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="upload-section" id="uploadSection">
+            <label for="csvUpload">📁 Upload CSV File</label>
+            <input type="file" id="csvUpload" accept=".csv" />
+            <div class="file-status" id="fileStatus">
+                <span>Upload a CSV with columns: Age, Annual Income, Spending Score</span>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls hidden" id="controls">
+            <div class="control-group">
+                <label>X‑Axis</label>
+                <select id="xVar">
+                    <option value="Age">Age</option>
+                    <option value="Annual Income (k$)" selected>Annual Income</option>
+                    <option value="Spending Score (1-100)">Spending Score</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Y‑Axis</label>
+                <select id="yVar">
+                    <option value="Age">Age</option>
+                    <option value="Annual Income (k$)">Annual Income</option>
+                    <option value="Spending Score (1-100)" selected>Spending Score</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Clusters</label>
+                <input type="range" id="clusterSlider" min="2" max="10" value="5" step="1" />
+                <span class="cluster-value" id="clusterLabel">5</span>
+            </div>
+            <button class="btn-reset" id="resetBtn">⟳ Reset</button>
+        </div>
+
+        <!-- Charts -->
+        <div class="chart-grid hidden" id="chartGrid">
+            <div class="chart-card">
+                <h3>🔵 Scatter · Customer Segments <small>centers marked ✕</small></h3>
+                <div class="chart-wrapper">
+                    <canvas id="scatterChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>📊 Cluster Size Distribution</h3>
+                <div class="chart-wrapper">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row hidden" id="statsRow">
+            <div class="stat-item">👥 Total Customers <span class="badge" id="totalCustomers">0</span></div>
+            <div class="stat-item">📌 Largest Cluster <span class="badge" id="largestCluster">—</span></div>
+            <div class="stat-item">🎯 Clusters <span class="badge" id="clusterCountDisplay">0</span></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend-footer hidden" id="legendFooter">
+            <div>
+                <span><span class="legend-dot" style="background:#1f77b4;"></span> largest</span>
+                <span><span class="legend-dot" style="background:#2ca02c;"></span> middle</span>
+                <span><span class="legend-dot" style="background:#ff7f0e;"></span> smallest</span>
+                <span><span class="legend-dot" style="background:#9467bd;"></span> other</span>
+                <span>✕ cluster centers</span>
+            </div>
+            <div>
+                <span class="hint" id="dataInfo">📊 <span id="rowCount">0</span> customers loaded</span>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState">
+            <h2>📊 No Data Loaded</h2>
+            <p>Upload a CSV file with customer data to get started.</p>
+            <p style="font-size:0.85rem; margin-top:8px;">
+                Expected columns: <strong>Age</strong>, <strong>Annual Income (k$)</strong>, <strong>Spending Score (1-100)</strong>
+            </p>
+            <p style="font-size:0.85rem; color:#8aa3c9;">
+                Tip: Download the Mall Customers dataset from Kaggle
+            </p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
