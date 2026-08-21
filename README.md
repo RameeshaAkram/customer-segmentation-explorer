@@ -81,10 +81,6 @@ customer-segmentation-explorer/
 ├── data/
 │   └── Mall_Customers.csv     # Sample dataset
 │
-├── assets/
-│   ├── screenshot.png         # Project preview
-│   └── favicon.ico            # Browser icon
-│
 ├── docs/
 │   ├── algorithm.md           # K-Means algorithm explanation
 │   └── user-guide.md          # User guide
