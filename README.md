@@ -52,21 +52,6 @@ The project is designed to make clustering and customer segmentation easier to u
 
 ---
 
-## 🖼️ Preview
-
-Add a screenshot of your project here:
-
-```text
-assets/
-└── screenshot.png
-```
-
-Then display it using:
-
-```markdown
-![Customer Segmentation Explorer Preview](assets/screenshot.png)
-```
-
 ---
 
 ## 🛠️ Built With
