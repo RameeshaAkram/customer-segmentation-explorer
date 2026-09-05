@@ -52,8 +52,6 @@ The project is designed to make clustering and customer segmentation easier to u
 
 ---
 
----
-
 ## 🛠️ Built With
 
 * **HTML5** — Application structure
